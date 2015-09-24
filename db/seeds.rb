@@ -6,12 +6,16 @@ require 'faker'
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+price_array = ["low", "high", "medium"]
+
 20.times do
 	Bar.create(
 		title: Faker::Company.name,
 		address: Faker::Address.street_address,
 		city: Faker::Address.city,
 		state: Faker::Address.state_abbr,
-		zip_code: Faker::Address.zip_code
+		zip_code: Faker::Address.zip_code,
+		description: Faker::Lorem.paragraph,
+		price_range: price_array.sample
 	)
 end

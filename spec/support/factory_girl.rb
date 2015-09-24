@@ -14,6 +14,12 @@ FactoryGirl.define do
     state 'MA'
     zip_code '02113'
     description 'local boston bar'
+    price_range 'low'
+  end
+
+  factory :review do
+    rating '3'
+    body 'good'
   end
 
 end

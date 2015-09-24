@@ -9,13 +9,22 @@ feature 'user visits show page', %Q{
   # Acceptance Criteria:
   # * I must see a bars details when I visit bar/:id
   # * If I am on the show page for a bar I should be
-  #   able to see a link to add a review
+  #   able to see reviews, if any exist
 
-  scenario 'visit bar show page' do
+  scenario 'visit bar show page and add review' do
 		bar = FactoryGirl.create(:bar)
+		review = FactoryGirl.create(:review)
     visit '/'
     click_link bar.title
     expect(page).to have_content(bar.address)
-    expect(page).to have_content("Add Review")
+
+    click_link "Add Review"
+    fill_in 'review[rating]', with: review.rating
+    fill_in 'review[body]', with: review.body
+
+    click_button 'Create Review'
+    expect(page).to have_content("3")
+    expect(page).to have_content("good")
   end
+
 end

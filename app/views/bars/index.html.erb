@@ -1,3 +1,4 @@
+<div class = text-center><%= link_to "Add Bar", new_bar_path %></div>
 <% @bars.each do |bar| %>
 <li><%= link_to bar.title, bar_path(bar) %></li>
 <% end %>
