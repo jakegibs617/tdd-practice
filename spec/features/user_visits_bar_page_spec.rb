@@ -16,6 +16,8 @@ feature 'user visits show page', %Q{
     visit '/'
     click_link bar.title
     expect(page).to have_content(bar.address)
+    expect(page).to have_content(bar.description)
+    expect(page).to have_content(bar.price_range)
     expect(page).to have_content("Add Review")
   end
 end
