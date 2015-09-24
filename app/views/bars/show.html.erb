@@ -1,15 +1,38 @@
-<table class="info_table">
-  <tr>
-    <th>Address:</th>
-    <td> <%= @bar.address %></td>
-  </tr>
-  <tr>
-    <th>City: </th>
-    <td><%= @bar.city %></td>
-  </tr>
-  <tr>
-    <th>Zip Code:</th>
-    <td><%= @bar.zip_code %></td>
-  </tr>
-  
+<h3>List of bars:</h3>
+  <table class="info_table">
+    <tr>
+      <th>Title:</th>
+      <td> <%= @bar.title %></td>
+    </tr>
+    <tr>
+      <th>Address:</th>
+      <td> <%= @bar.address %></td>
+    </tr>
+    <tr>
+      <th>City: </th>
+      <td><%= @bar.city %></td>
+    </tr>
+    <tr>
+      <th>Zip Code:</th>
+      <td><%= @bar.zip_code %></td>
+    </tr>
+    <tr>
+      <th>State:</th>
+      <td><%= @bar.state %></td>
+    </tr>
+  </table>
+<div class = text-center><%= link_to "Add Bar", new_bar_path %></div>
+<div class = text-center><%= link_to "Add Review", new_bar_review_path(@bar) %></div>
+
+<table class="review_table">
+  <% @reviews.each do |review|%>
+    <tr>
+      <th >Rating:</th>
+      <td ><%= review.rating %></td>
+    </tr>
+    <tr>
+      <th>Comments:</th>
+      <td> <%= review.body %></td>
+    </tr>
+  <% end %>
 </table>

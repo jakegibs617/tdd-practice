@@ -11,16 +11,27 @@ feature 'user visits show page', %Q{
   # * If I am on the show page for a bar I should be
   #   able to see reviews, if any exist
 
-  scenario 'visit root page and see list of bars' do
+  scenario 'visit bar show page' do
 		bar = FactoryGirl.create(:bar)
     visit '/'
-# save_and_open_page
     click_link bar.title
     expect(page).to have_content(bar.address)
     expect(page).to have_content("Add Review")
+  end
 
-    expect(page).to have_content(bar.title)
-    expect(page).to_not have_content(bar.address)
+  scenario 'visit bar show page and add bar' do
+		bar = FactoryGirl.create(:bar)
+    visit '/'
+    click_link bar.title
+    expect(page).to have_content(bar.address)
+
+    click_link "Add Review"
+    fill_in 'review[rating]', with: '5'
+    fill_in 'review[body]', with: 'good'
+
+    click_button 'Create Review'
+    expect(page).to have_content("Review")
+    expect(page).to have_content("good")
   end
 
 end

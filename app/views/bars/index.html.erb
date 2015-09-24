@@ -1,5 +1,3 @@
-<p>
 <% @bars.each do |bar| %>
-<li><%= link_to bar.title, @bar %></li>
+<li><%= link_to bar.title, bar_path(bar) %></li>
 <% end %>
-</p>

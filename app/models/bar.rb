@@ -1,4 +1,6 @@
 class Bar < ActiveRecord::Base
+  has_many :reviews
+	
 	validates :title, uniqueness: true, presence: true
   validates :address, presence: true
   validates :city, presence: true
